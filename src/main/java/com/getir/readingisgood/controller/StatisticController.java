@@ -27,7 +27,7 @@ public class StatisticController {
 	
 	@RequestMapping(value = "/monthly-order-statistic", method = RequestMethod.GET)
     public ResponseEntity<List<MonthlyOrderStatisticDto>> getMonthlyOrderStatistic() {
-		UserEntity foundUser = userService.findByEmail(authUtil.getAuthentication().getName());
+		UserEntity foundUser = userService.findByEmail(authUtil.getUsername());
         return ResponseEntity.ok(statisticService.findMontlyOrderStatisticByUserId(foundUser.getId()));
     }
 

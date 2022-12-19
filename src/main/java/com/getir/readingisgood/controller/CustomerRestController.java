@@ -2,9 +2,6 @@ package com.getir.readingisgood.controller;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +16,7 @@ import com.getir.readingisgood.dto.TokenDto;
 import com.getir.readingisgood.entity.UserEntity;
 import com.getir.readingisgood.service.OrderService;
 import com.getir.readingisgood.service.UserService;
+import com.getir.readingisgood.util.AuthUtil;
 import com.getir.readingisgood.util.JwtTokenUtil;
 
 import lombok.RequiredArgsConstructor;
@@ -28,14 +26,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CustomerRestController {
 
-    private final AuthenticationManager authenticationManager;
     private final JwtTokenUtil jwtTokenUtil;
     private final UserService userService;
     private final OrderService orderService;
+    private final AuthUtil authUtil;
     
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<TokenDto> login(@RequestBody LoginDto loginDto) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword()));
+		authUtil.authenticate(loginDto.getEmail(), loginDto.getPassword());
         final String token = jwtTokenUtil.generateToken(loginDto.getEmail());
         return ResponseEntity.ok(new TokenDto(loginDto.getEmail(), token));
     }
@@ -48,7 +46,7 @@ public class CustomerRestController {
     
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public ResponseEntity<PageDto<OrderDto>> getOrders(Pageable pageable) {
-    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
+    	String username = authUtil.getUsername();
     	UserEntity foundUser = userService.findByEmail(username);
     	PageDto<OrderDto> orderPage = orderService.findByUserId(foundUser.getId(), pageable);
         return ResponseEntity.ok(orderPage);

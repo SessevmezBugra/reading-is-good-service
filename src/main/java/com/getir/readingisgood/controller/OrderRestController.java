@@ -3,6 +3,7 @@ package com.getir.readingisgood.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,7 +38,9 @@ public class OrderRestController {
     }
 	
 	@RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<OrderDto>> getOrdersByStartAndEndDate(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+    public ResponseEntity<List<OrderDto>> getOrdersByStartAndEndDate(
+    		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, 
+    		@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
         return ResponseEntity.ok(orderService.findByStartDateAndEndDate(startDate, endDate));
     }
 }

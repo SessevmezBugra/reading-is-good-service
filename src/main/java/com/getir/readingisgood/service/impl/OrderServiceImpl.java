@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
 	@Transactional(isolation = Isolation.REPEATABLE_READ)
 	@Override
 	public void createOrder(CreateOrderDto createOrderDto) {
-		UserEntity foundUser = userService.findByEmail(authUtil.getAuthentication().getName());
+		UserEntity foundUser = userService.findByEmail(authUtil.getUsername());
 		
 		OrderEntity orderEntity = new OrderEntity();
 		orderEntity.setUser(foundUser);

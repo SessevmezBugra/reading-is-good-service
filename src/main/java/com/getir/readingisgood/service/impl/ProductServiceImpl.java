@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.getir.readingisgood.dto.CreateProductDto;
 import com.getir.readingisgood.dto.ProductDto;
 import com.getir.readingisgood.entity.ProductEntity;
 import com.getir.readingisgood.exception.ReadingIsGoodException;
@@ -25,8 +26,8 @@ public class ProductServiceImpl implements ProductService {
 	private final ModelMapper modelMapper;
 	
 	@Override
-	public void createProduct(ProductDto productDto) {
-		ProductEntity productEntity = modelMapper.map(productDto, ProductEntity.class);
+	public void createProduct(CreateProductDto createProductDto) {
+		ProductEntity productEntity = modelMapper.map(createProductDto, ProductEntity.class);
 		productRepository.save(productEntity);
 	}
 

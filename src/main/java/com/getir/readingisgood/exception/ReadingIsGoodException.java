@@ -7,5 +7,5 @@ public class ReadingIsGoodException extends RuntimeException {
 	public ReadingIsGoodException(String message) {
 		super(message);
 	}
-
+	
 }

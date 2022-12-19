@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.getir.readingisgood.constant.ApiPath;
+import com.getir.readingisgood.dto.CreateProductDto;
 import com.getir.readingisgood.dto.ProductDto;
 import com.getir.readingisgood.service.ProductService;
 
@@ -27,8 +28,8 @@ public class BookRestController {
 	
 	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> createBook(@RequestBody ProductDto productDto) {
-		productService.createProduct(productDto);
+    public ResponseEntity<Void> createBook(@RequestBody CreateProductDto createProductDto) {
+		productService.createProduct(createProductDto);
         return ResponseEntity.ok().build();
     }
 	
