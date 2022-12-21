@@ -27,3 +27,8 @@ How to run:
 
 ## Admin User
 - You can define your admin user by changing .env file.
+
+## Postman Collection
+- You can import postman.json
+- Every request has an example
+- You need to provide token so you need to authenticate with admin or customer before
