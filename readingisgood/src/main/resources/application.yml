@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: reading-is-good-service
+  datasource:
+    hikari:
+      minimumIdle: 2
+      maximumPoolSize: 10
+      idleTimeout: 120000
+      connectionTimeout: 300000
+      leakDetectionThreshold: 300000
+    url: jdbc:mysql://${RDS_HOSTNAME:localhost}:${RDS_PORT:3306}/${RDS_DB_NAME:readingisgood}?serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: ${RDS_USERNAME:root}
+    password: ${RDS_PASSWORD:ahlas1706}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database-platform: org.hibernate.dialect.MySQLDialect
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 8080
+
+admin:
+  username: ${ADMIN_USERNAME:admin@getir.com}
+  password: ${ADMIN_PASSWORD:admin}

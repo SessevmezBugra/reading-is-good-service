@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "7ad74a71-7781-4804-8a92-3a77616f04c7",
+		"name": "ReadingIsGood",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4405523"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"testuser1@gmail.com\",\n    \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"testuser1@gmail.com\",\n    \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@getir.com\",\n    \"password\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnZXRpci5jb20iLCJpc3MiOiJodHRwOi8vZ2V0aXIuY29tIiwiaWF0IjoxNjcxNDg3NzgyLCJleHAiOjE2NzE1NzQxODJ9.rOAO2lHhPEhWXxDQad742xoaVU6GJ7iOV7yA9lqLVuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 92.6,\n    \"stock\": 35,\n    \"name\": \"Design Data Intensive Applications\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnZXRpci5jb20iLCJpc3MiOiJodHRwOi8vZ2V0aXIuY29tIiwiaWF0IjoxNjcxNDg3NzgyLCJleHAiOjE2NzE1NzQxODJ9.rOAO2lHhPEhWXxDQad742xoaVU6GJ7iOV7yA9lqLVuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book Stock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnZXRpci5jb20iLCJpc3MiOiJodHRwOi8vZ2V0aXIuY29tIiwiaWF0IjoxNjcxNDg3NzgyLCJleHAiOjE2NzE1NzQxODJ9.rOAO2lHhPEhWXxDQad742xoaVU6GJ7iOV7yA9lqLVuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/book/1/add?stock=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book",
+						"1",
+						"add"
+					],
+					"query": [
+						{
+							"key": "stock",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Substract Book Stock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnZXRpci5jb20iLCJpc3MiOiJodHRwOi8vZ2V0aXIuY29tIiwiaWF0IjoxNjcxNDg3NzgyLCJleHAiOjE2NzE1NzQxODJ9.rOAO2lHhPEhWXxDQad742xoaVU6GJ7iOV7yA9lqLVuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/book/1/substract?stock=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book",
+						"1",
+						"substract"
+					],
+					"query": [
+						{
+							"key": "stock",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer Orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnZXRpci5jb20iLCJpc3MiOiJodHRwOi8vZ2V0aXIuY29tIiwiaWF0IjoxNjcxNDg3NzgyLCJleHAiOjE2NzE1NzQxODJ9.rOAO2lHhPEhWXxDQad742xoaVU6GJ7iOV7yA9lqLVuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/order?page=0&size=3&sort=id&direction=DESC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"order"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						},
+						{
+							"key": "sort",
+							"value": "id"
+						},
+						{
+							"key": "direction",
+							"value": "DESC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnZXRpci5jb20iLCJpc3MiOiJodHRwOi8vZ2V0aXIuY29tIiwiaWF0IjoxNjcxNDg3NzgyLCJleHAiOjE2NzE1NzQxODJ9.rOAO2lHhPEhWXxDQad742xoaVU6GJ7iOV7yA9lqLVuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"items\": [\n        { \n            \"productId\": 1,\n            \"quantity\": 5\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Order By Order ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnZXRpci5jb20iLCJpc3MiOiJodHRwOi8vZ2V0aXIuY29tIiwiaWF0IjoxNjcxNDg3NzgyLCJleHAiOjE2NzE1NzQxODJ9.rOAO2lHhPEhWXxDQad742xoaVU6GJ7iOV7yA9lqLVuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/order/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"order",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders By Date",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0dXNlcjFAZ21haWwuY29tIiwiaXNzIjoiaHR0cDovL2dldGlyLmNvbSIsImlhdCI6MTY3MTQ5MDI3OSwiZXhwIjoxNjcxNTc2Njc5fQ.ezlT7thVYB9UrPrq_VeJKxSSYLgo5XqK2z0yqiF1tZU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/order?startDate=2020-01-01&endDate=2023-01-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"order"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2020-01-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2023-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Monthly Order Statistic",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0dXNlcjFAZ21haWwuY29tIiwiaXNzIjoiaHR0cDovL2dldGlyLmNvbSIsImlhdCI6MTY3MTQ5MTMxNywiZXhwIjoxNjcxNTc3NzE3fQ.YNIQQQfAe4WFAUA8YCWEz68PwhASaL1bfXVAbjtMvu0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statistic/monthly-order-statistic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statistic",
+						"monthly-order-statistic"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
